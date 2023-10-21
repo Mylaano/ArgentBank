@@ -1,0 +1,46 @@
+.notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 139px;
+    
+    @media (max-width: 375px) {
+        gap: 113px;
+        margin: 113px auto;
+    }
+    
+    &__title {
+        font-size: 288px;
+        font-weight: 700;
+        margin: 0;
+        color: #00bc77;
+
+        @media (max-width: 375px) {
+            font-size: 96px;
+        }
+    }
+
+    &__desc {
+        font-size: 36px;
+        font-weight: 500;
+        margin: 0;
+        color: #025936;
+
+        @media (max-width: 375px) {
+            width: 260px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 25px;
+        }
+    }
+
+    &__link {
+        color: #025936;
+        font-size: 18px;
+        font-weight: 500;
+
+        @media (max-width: 375px) {
+            font-size: 14px;
+        }
+    }
+}
