@@ -24,12 +24,13 @@ function ProfilePage() {
         setEditing(true);
     };
 
-    const handleCancelClick = () => {
+    const handleCancelClick = (e) => {
+        e.preventDefault();
         setEditing(false);
     };
 
-    const handleSaveClick = async () => {
-        setEditing(false);
+    const handleSaveClick = async (e) => {
+        handleCancelClick(e);
 
         const response = await updateUserInfo(user.token, newUsername);
         if(response) {
