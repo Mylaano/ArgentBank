@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { updateUser } from '../redux/slices/userSlice';
+import { updateUserInfo } from '../services/userService';
 
 import '../styles/Profile/Profile.css';
 
@@ -27,53 +28,15 @@ function ProfilePage() {
         setEditing(false);
     };
 
-    const handleSaveClick = () => {
+    const handleSaveClick = async () => {
         setEditing(false);
-        updateUserInfo(newUsername);
-    };
 
-    async function updateUserInfo(userName) {
-        try {
-            const request = await fetch('http://localhost:3001/api/v1/user/profile', {
-                method: 'PUT',
-                headers: { 
-                    'accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}`
-                },
-                body: JSON.stringify({ userName })
-            });
-
-            const response = await request.json();
-
-            switch(response.status) {
-                case 200: {
-                    dispatch(updateUser(newUsername));
-                    alert('Username successfully updated');
-                    break;
-                }
-                case 400: {
-                    const errorMessage = 'Invalid Fields';
-                    console.error(errorMessage);
-                    alert(errorMessage);
-                    break;
-                }
-                case 500: {
-                    const errorMessage = 'Internal Server Error';
-                    console.error(errorMessage);
-                    alert(errorMessage);
-                    break;
-                }
-                default: {
-                    const errorMessage = 'An error has occurred.';
-                    console.error(errorMessage);
-                    alert(errorMessage);
-                }
-            }
-        } catch (error) {
-            console.error(`An error occurred while updating user info : ${error}`);
+        const response = await updateUserInfo(user.token, newUsername);
+        if(response) {
+            dispatch(updateUser(newUsername));
+            alert('Username successfully updated');
         }
-    }
+    };
 
     useEffect(() => {
         if(user.token == null) {

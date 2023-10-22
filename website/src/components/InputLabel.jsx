@@ -23,7 +23,7 @@ InputLabel.propTypes = {
     type: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     labelName: PropTypes.string.isRequired,
-    autoComplete: PropTypes.string.isRequired,
+    autoComplete: PropTypes.string,
     defaultValue: PropTypes.string,
     onChange: PropTypes.func,
     required: PropTypes.bool,
