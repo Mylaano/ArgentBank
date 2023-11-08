@@ -41,7 +41,7 @@ function ProfilePage() {
 
     useEffect(() => {
         if(user.token == null) {
-            navigate("/");
+            navigate('/404');
         }
     });
 

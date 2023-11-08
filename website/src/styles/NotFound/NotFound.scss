@@ -15,6 +15,10 @@
         margin: 0;
         color: #00bc77;
 
+        @media (max-width: 768px) {
+            font-size: 150px;
+        }
+
         @media (max-width: 375px) {
             font-size: 96px;
         }
@@ -25,6 +29,10 @@
         font-weight: 500;
         margin: 0;
         color: #025936;
+
+        @media (max-width: 768px) {
+            font-size: 24px;
+        }
 
         @media (max-width: 375px) {
             width: 260px;
